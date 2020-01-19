@@ -67,12 +67,4 @@ public class VCService {
                 .filter(integer -> !actualVersions.containsKey(integer))
                 .collect(Collectors.toList());
     }
-
-//    public void printTableVersion() {
-//        System.out.println(tableVersionMap);
-//    }
-//
-//    public void printItemVersion() {
-//        System.out.println(itemVersionMap);
-//    }
 }
