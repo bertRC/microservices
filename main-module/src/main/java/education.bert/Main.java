@@ -20,26 +20,31 @@ public class Main {
         JdbcHelper.executeUpdate(dbUrl, "CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT NOT NULL);");
 
         userUpdateService.saveUser(new UserModel(0, "Vasya"));
+        userUpdateService.saveUser(new UserModel(0, "Petya"));
+        userUpdateService.saveUser(new UserModel(0, "Sasha"));
+        userUpdateService.saveUser(new UserModel(0, "Masha"));
+
+        System.out.println(userSearchService.searchByName("MASHA"));
 
 //        UserModel user = userSearchService.getUser(1);
 //        System.out.println(user);
 
-        int id = 1;
-        final List<String> list = JdbcHelper.executeQueryForList(
-                dbUrl,
-                "EXPLAIN ANALYZE SELECT id, name FROM users WHERE id = ?;",
-                statement ->
-                {
-                    statement.setInt(1, id);
-                    return statement;
-                },
-                resultSet ->
-                {
-                    return resultSet.getString(1);
-                }
-        );
-
-        System.out.println(list.size());
-        System.out.println(list);
+//        int id = 1;
+//        final List<String> list = JdbcHelper.executeQueryForList(
+//                dbUrl,
+//                "EXPLAIN ANALYZE SELECT id, name FROM users WHERE id = ?;",
+//                statement ->
+//                {
+//                    statement.setInt(1, id);
+//                    return statement;
+//                },
+//                resultSet ->
+//                {
+//                    return resultSet.getString(1);
+//                }
+//        );
+//
+//        System.out.println(list.size());
+//        System.out.println(list);
     }
 }
