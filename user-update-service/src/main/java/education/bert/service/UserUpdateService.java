@@ -10,9 +10,10 @@ public class UserUpdateService {
         this.dbUrl = dbUrl;
     }
 
-    public int saveUser(UserModel user) {
+    public UserModel saveUser(UserModel user) {
+        UserModel result = new UserModel(user.getId(), user.getName());
         if (user.getId() == 0) {
-            return JdbcHelper.executeUpdate(
+            int id = JdbcHelper.executeUpdateWithId(
                     dbUrl,
                     "INSERT INTO users(name) VALUES (?);",
                     statement ->
@@ -21,22 +22,26 @@ public class UserUpdateService {
                         return statement;
                     }
             );
-        } else {
-            return JdbcHelper.executeUpdate(
-                    dbUrl,
-                    "UPDATE users SET name = ? WHERE id = ?;",
-                    statement ->
-                    {
-                        statement.setString(1, user.getName());
-                        statement.setInt(2, user.getId());
-                        return statement;
-                    }
-            );
+            result.setId(id);
+        } else if (0 ==
+                JdbcHelper.executeUpdate(
+                        dbUrl,
+                        "UPDATE users SET name = ? WHERE id = ?;",
+                        statement ->
+                        {
+                            statement.setString(1, user.getName());
+                            statement.setInt(2, user.getId());
+                            return statement;
+                        }
+                )
+        ) {
+            return null;
         }
+        return result;
     }
 
-    public int removeUser(int id) {
-        return JdbcHelper.executeUpdate(
+    public boolean removeUser(int id) {
+        return 0 != JdbcHelper.executeUpdate(
                 dbUrl,
                 "DELETE FROM users WHERE id = ?;",
                 statement ->
