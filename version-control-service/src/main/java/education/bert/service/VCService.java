@@ -1,8 +1,10 @@
 package education.bert.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class VCService {
     private final Map<String, Integer> tableVersionMap = new ConcurrentHashMap<>();
@@ -51,6 +53,19 @@ public class VCService {
 
     public Map<Object, Integer> getItemsVersion(String tableName) {
         return new HashMap<>(itemVersionMap.getOrDefault(tableName, new HashMap<>()));
+    }
+
+    public static List<Object> getChangedItems(Map<Object, Integer> actualVersions, Map<Object, Integer> versionsToCheck) {
+        return actualVersions.entrySet().stream()
+                .filter(e -> !e.getValue().equals(versionsToCheck.get(e.getKey())))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
+    public static List<Object> getMissedItems(Map<Object, Integer> actualVersions, Map<Object, Integer> versionsToCheck) {
+        return versionsToCheck.keySet().stream()
+                .filter(integer -> !actualVersions.containsKey(integer))
+                .collect(Collectors.toList());
     }
 
 //    public void printTableVersion() {
