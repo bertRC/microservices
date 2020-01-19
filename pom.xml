@@ -20,6 +20,7 @@
         <util-module.version>1.0</util-module.version>
         <user-update-service.vesrion>1.0</user-update-service.vesrion>
         <user-search-service.vesrion>1.0</user-search-service.vesrion>
+        <version-control-service.version>1.0</version-control-service.version>
     </properties>
 
     <build>
@@ -54,6 +55,7 @@
         <module>util-module</module>
         <module>user-update-service</module>
         <module>user-search-service</module>
+        <module>version-control-service</module>
     </modules>
 
 </project>

@@ -29,6 +29,11 @@
             <artifactId>user-search-service</artifactId>
             <version>${user-search-service.vesrion}</version>
         </dependency>
+        <dependency>
+            <groupId>education.bert</groupId>
+            <artifactId>version-control-service</artifactId>
+            <version>${version-control-service.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

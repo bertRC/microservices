@@ -19,6 +19,11 @@
             <artifactId>util-module</artifactId>
             <version>${util-module.version}</version>
         </dependency>
+        <dependency>
+            <groupId>education.bert</groupId>
+            <artifactId>version-control-service</artifactId>
+            <version>${version-control-service.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
