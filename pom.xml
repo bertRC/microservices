@@ -21,6 +21,8 @@
         <util-module.version>1.0</util-module.version>
         <user-update-service.vesrion>1.0</user-update-service.vesrion>
         <user-search-service.vesrion>1.0</user-search-service.vesrion>
+        <post-update-service.vesrion>1.0</post-update-service.vesrion>
+        <post-search-service.vesrion>1.0</post-search-service.vesrion>
         <version-control-service.version>1.0</version-control-service.version>
     </properties>
 
@@ -56,6 +58,8 @@
         <module>util-module</module>
         <module>user-update-service</module>
         <module>user-search-service</module>
+        <module>post-update-service</module>
+        <module>post-search-service</module>
         <module>version-control-service</module>
     </modules>
 

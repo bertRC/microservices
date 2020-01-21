@@ -41,6 +41,16 @@
         </dependency>
         <dependency>
             <groupId>education.bert</groupId>
+            <artifactId>post-update-service</artifactId>
+            <version>${post-update-service.vesrion}</version>
+        </dependency>
+        <dependency>
+            <groupId>education.bert</groupId>
+            <artifactId>post-search-service</artifactId>
+            <version>${post-search-service.vesrion}</version>
+        </dependency>
+        <dependency>
+            <groupId>education.bert</groupId>
             <artifactId>version-control-service</artifactId>
             <version>${version-control-service.version}</version>
         </dependency>
