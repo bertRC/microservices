@@ -1,9 +1,15 @@
 package education.bert.unit;
 
 import education.bert.MyApplication;
+import education.bert.benchmark.MicroservicesBenchmark;
 import education.bert.model.UserModel;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +18,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserServicesTest {
     final MyApplication myApplication = new MyApplication();
+
+    @AfterAll
+    static void benchmarkRunner() throws RunnerException {
+        Options options = new OptionsBuilder()
+                .include(MicroservicesBenchmark.class.getSimpleName())
+                .forks(1)
+                .shouldFailOnError(true)
+                .build();
+        new Runner(options).run();
+    }
 
     @BeforeEach
     public void setup() {
