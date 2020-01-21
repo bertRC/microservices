@@ -8,7 +8,7 @@ import java.util.List;
 public class UserSearchService {
     private String dbUrl;
 
-    private final int minTextLengthForSearch = 3;
+    public final int minTextLengthForSearch = 3;
 
     public void setDbUrl(String dbUrl) {
         this.dbUrl = dbUrl;
