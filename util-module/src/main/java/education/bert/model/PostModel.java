@@ -2,7 +2,7 @@ package education.bert.model;
 
 import java.util.Objects;
 
-public class PostModel {
+public class PostModel implements Comparable<PostModel> {
     private int id;
     private String postName;
     private int creatorId;
@@ -35,6 +35,11 @@ public class PostModel {
 
     public void setCreatorId(int creatorId) {
         this.creatorId = creatorId;
+    }
+
+    @Override
+    public int compareTo(PostModel o) {
+        return o.getId();
     }
 
     @Override
