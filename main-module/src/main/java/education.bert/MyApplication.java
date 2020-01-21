@@ -25,4 +25,13 @@ public class MyApplication {
         JdbcHelper.executeUpdate(dbUrl, "DROP TABLE IF EXISTS users;");
         JdbcHelper.executeUpdate(dbUrl, "CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT NOT NULL);");
     }
+
+    public void dropTables() {
+        JdbcHelper.executeUpdate(dbUrl, "DROP TABLE IF EXISTS users;");
+    }
+
+    public void dropTablesSmart() {
+        dropTables();
+        vcService.removeTable("users");
+    }
 }
