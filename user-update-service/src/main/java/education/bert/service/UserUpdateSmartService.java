@@ -2,14 +2,14 @@ package education.bert.service;
 
 import education.bert.model.UserModel;
 
-public class UserUpdateSmartService extends UserUpdateService {
+public class UserUpdateSmartService extends UserUpdateService implements SmartService {
     private VCService vcService;
 
+    @Override
     public void setVcService(VCService vcService) {
         this.vcService = vcService;
     }
 
-    //TODO: check concurrent safety
     @Override
     public UserModel saveUser(UserModel user) {
         UserModel result = super.saveUser(user);
