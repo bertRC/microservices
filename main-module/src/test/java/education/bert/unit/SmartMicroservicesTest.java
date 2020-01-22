@@ -1,9 +1,15 @@
 package education.bert.unit;
 
 import education.bert.MyApplicationSmart;
+import education.bert.benchmark.MicroservicesBenchmark;
 import education.bert.model.PostModel;
 import education.bert.model.UserModel;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.List;
 
@@ -14,6 +20,16 @@ public class SmartMicroservicesTest extends MicroservicesTest {
 
     public SmartMicroservicesTest() {
         myApplication = new MyApplicationSmart();
+    }
+
+    @AfterAll
+    static void benchmarkRunner() throws RunnerException {
+        Options options = new OptionsBuilder()
+                .include(MicroservicesBenchmark.class.getSimpleName())
+                .forks(1)
+                .shouldFailOnError(true)
+                .build();
+        new Runner(options).run();
     }
 
     @Test
