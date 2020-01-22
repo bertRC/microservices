@@ -2,7 +2,7 @@ package education.bert.model;
 
 import java.util.Objects;
 
-public class UserModel implements Comparable<UserModel> {
+public class UserModel {
     private int id;
     private String name;
 
@@ -25,11 +25,6 @@ public class UserModel implements Comparable<UserModel> {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public int compareTo(UserModel o) {
-        return o.getId();
     }
 
     @Override
