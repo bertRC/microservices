@@ -2,6 +2,7 @@ package education.bert.service;
 
 import education.bert.model.UserModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,9 +46,9 @@ public class UserSearchSmartService extends UserSearchService implements SmartSe
     }
 
     @Override
-    public List<UserModel> getAll() {
+    public synchronized List<UserModel> getAll() {
         updateData();
-        return users.values().stream().sorted().collect(Collectors.toList());
+        return new ArrayList<>(users.values());
     }
 
     @Override
@@ -57,6 +58,6 @@ public class UserSearchSmartService extends UserSearchService implements SmartSe
         }
         updateData();
         return users.values().stream().filter(user -> user.getName().toLowerCase().contains(name.toLowerCase()))
-                .sorted().collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 }

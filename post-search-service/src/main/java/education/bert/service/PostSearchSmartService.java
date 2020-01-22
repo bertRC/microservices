@@ -2,6 +2,7 @@ package education.bert.service;
 
 import education.bert.model.PostModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class PostSearchSmartService extends PostSearchService implements SmartSe
     @Override
     public List<PostModel> getAll() {
         updateData();
-        return posts.values().stream().sorted().collect(Collectors.toList());
+        return new ArrayList<>(posts.values());
     }
 
     @Override
@@ -57,13 +58,13 @@ public class PostSearchSmartService extends PostSearchService implements SmartSe
         }
         updateData();
         return posts.values().stream().filter(post -> post.getPostName().toLowerCase().contains(postName.toLowerCase()))
-                .sorted().collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<PostModel> searchByCreator(int creatorId) {
         updateData();
         return posts.values().stream().filter(post -> post.getCreatorId() == creatorId)
-                .sorted().collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 }
