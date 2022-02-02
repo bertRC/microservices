@@ -16,7 +16,7 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <junit-jupiter.version>5.5.1</junit-jupiter.version>
         <org-openjdk-jmh.version>1.9.3</org-openjdk-jmh.version>
-        <postgresql.version>42.2.5</postgresql.version>
+        <postgresql.version>42.2.25</postgresql.version>
         <org-openjdk-jmh.version>1.9.3</org-openjdk-jmh.version>
         <util-module.version>1.0</util-module.version>
         <user-update-service.vesrion>1.0</user-update-service.vesrion>
